@@ -1,26 +1,23 @@
-Here's a well-structured `README.md` for your YouTube Downloader project:
-
-````markdown
 # YouTube Downloader
 
-A Python script to list and download YouTube videos with merged audio using `yt-dlp`. This script allows users to select a specific video resolution and automatically merges the best audio track.
+A Python script to list and download YouTube videos with merged audio using `yt-dlp`. This script allows users to select a specific video resolution and automatically merges the best audio track into a single file.
 
 ---
 
 ## Features
 
-- Lists all available video formats for a YouTube video.
-- Allows users to select their desired resolution (e.g., 1080p, 720p, etc.).
-- Automatically downloads and merges video and audio into a single file.
-- Saves the downloaded video with the title of the YouTube video.
+- Displays all available video formats for a YouTube video.
+- Allows users to choose their desired resolution (e.g., 1080p, 720p, etc.).
+- Automatically downloads and merges the video with the best available audio.
+- Saves the downloaded video with the original YouTube video title.
 
 ---
 
 ## Requirements
 
-- **Python 3.x**: Make sure Python 3.x is installed.
-- **yt-dlp**: For downloading videos and managing formats.
-- **ffmpeg**: Required for merging video and audio streams.
+- **Python 3.x**: Make sure Python 3.x is installed on your system.
+- **yt-dlp**: A modern and powerful YouTube downloader library.
+- **FFmpeg**: Required for merging video and audio streams.
 
 ---
 
@@ -28,16 +25,23 @@ A Python script to list and download YouTube videos with merged audio using `yt-
 
 ### 1. Clone the Repository
 
-Clone the project repository or create a Python project directory.
+Clone this repository or create your own project folder.
 
-### 2. Create and Activate Virtual Environment
+```bash
+git clone https://github.com/<your-username>/youtube_downloader.git
+cd youtube_downloader
+```
+
+### 2. Set Up a Virtual Environment
+
+It's recommended to use a virtual environment for your dependencies:
 
 - **macOS/Linux**:
+
   ```bash
   python3 -m venv venv
   source venv/bin/activate
   ```
-````
 
 - **Windows**:
   ```cmd
@@ -47,24 +51,28 @@ Clone the project repository or create a Python project directory.
 
 ### 3. Install Dependencies
 
-Install the required libraries in your virtual environment:
+Install the required libraries in the virtual environment:
 
 ```bash
 pip install yt-dlp
 ```
 
-Install `ffmpeg`:
+### 4. Install FFmpeg
 
 - **macOS** (using Homebrew):
+
   ```bash
   brew install ffmpeg
   ```
+
 - **Linux**:
+
   ```bash
   sudo apt install ffmpeg
   ```
+
 - **Windows**:
-  Download and install FFmpeg from [ffmpeg.org](https://ffmpeg.org/download.html).
+  Download and install FFmpeg from [ffmpeg.org](https://ffmpeg.org/download.html). Ensure it's added to your system's PATH.
 
 ---
 
@@ -79,7 +87,7 @@ Install `ffmpeg`:
 2. **Enter the YouTube Video URL**:
    When prompted, paste the URL of the YouTube video.
 
-3. **Select the Desired Resolution**:
+3. **Choose the Desired Resolution**:
    The script will display all available video formats. Enter the format ID (e.g., `137` for 1080p).
 
 4. **Download and Merge**:
@@ -113,26 +121,10 @@ Download completed!
 ```plaintext
 youtube_downloader/
 ├── venv/                 # Virtual environment (not tracked in Git)
-├── download_youtube.py   # The main script
+├── download_youtube.py   # The main Python script
 ├── README.md             # Documentation
-├── .gitignore            # Ignore unnecessary files
+├── .gitignore            # Ignore unnecessary files like venv/
 ```
-
----
-
-## License
-
-This project is licensed under the **MIT License**. Feel free to use and modify it as needed.
-
----
-
-## Contributing
-
-Contributions are welcome! If you'd like to improve this project:
-
-1. Fork the repository.
-2. Create a new feature branch.
-3. Submit a pull request.
 
 ---
 
@@ -146,6 +138,39 @@ If you see an error like:
 ERROR: You have requested merging of multiple formats but ffmpeg is not installed.
 ```
 
-Ensure FFmpeg is installed and accessible via the system path.
+Make sure FFmpeg is installed and accessible via the system PATH. Follow the instructions in the **Installation** section to resolve this issue.
 
 ---
+
+## License
+
+This project is licensed under the **MIT License**. You are free to use, modify, and distribute it as needed.
+
+---
+
+## Contributing
+
+Contributions are welcome! To contribute:
+
+1. Fork this repository.
+2. Create a new branch for your feature:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add your message here"
+   ```
+4. Push your branch:
+   ```bash
+   git push origin feature-name
+   ```
+5. Open a pull request and describe your changes.
+
+---
+
+Happy downloading! 🚀
+
+---
+
+This version improves formatting, simplifies instructions, and ensures clarity for all users. Let me know if you’d like to add anything else! 🚀
