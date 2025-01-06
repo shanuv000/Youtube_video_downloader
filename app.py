@@ -10,6 +10,18 @@ if not os.path.exists(DOWNLOADS_DIR):
     os.makedirs(DOWNLOADS_DIR)
 
 
+@app.errorhandler(400)
+def bad_request(error):
+    """Custom handler for 400 errors."""
+    return jsonify({'error': 'Bad Request', 'message': str(error)}), 400
+
+
+@app.errorhandler(500)
+def internal_server_error(error):
+    """Custom handler for 500 errors."""
+    return jsonify({'error': 'Internal Server Error', 'message': str(error)}), 500
+
+
 @app.route('/')
 def home():
     return "Welcome to the YouTube Downloader API! 🚀 Use /list-formats and /download endpoints to interact with the service."
@@ -38,8 +50,10 @@ def list_formats():
             ]
             return jsonify({'formats': available_formats})
 
+    except yt_dlp.utils.DownloadError as e:
+        return jsonify({'error': 'Invalid YouTube URL or video unavailable', 'message': str(e)}), 400
     except Exception as e:
-        return jsonify({'error': f'Failed to list formats: {str(e)}'}), 500
+        return jsonify({'error': 'Failed to list formats', 'message': str(e)}), 500
 
 
 @app.route('/download', methods=['POST'])
@@ -63,8 +77,10 @@ def download_video():
 
         return jsonify({'message': 'Download completed!', 'file_path': DOWNLOADS_DIR})
 
+    except yt_dlp.utils.DownloadError as e:
+        return jsonify({'error': 'Failed to download video', 'message': str(e)}), 400
     except Exception as e:
-        return jsonify({'error': f'Failed to download video: {str(e)}'}), 500
+        return jsonify({'error': 'An unexpected error occurred', 'message': str(e)}), 500
 
 
 if __name__ == '__main__':
